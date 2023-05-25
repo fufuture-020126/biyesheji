@@ -58,8 +58,6 @@ public class UserController {
         List list = userService.lambdaQuery()
                 .eq(User::getNo,user.getNo())
                 .eq(User::getPassword,user.getPassword()).list();
-
-
         if(list.size()>0){
             User user1 = (User)list.get(0);
             List menuList = menuService.lambdaQuery().like(Menu::getMenuright,user1.getRoleId()).list();
@@ -70,7 +68,6 @@ public class UserController {
         }
         return Result.fail();
     }
-
     //修改
     @PostMapping("/mod")
     public boolean mod(@RequestBody User user){
